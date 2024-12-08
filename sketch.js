@@ -5,14 +5,14 @@ let stamp_santa;
 let stamp_hat;
 let stamp_moustache;
 let isStamping = false;
-let currX = 0;
-let currY = 0;
 
 let imgObject
 let stampArray = [];
 
 const VIDEO_WIDTH = 640
 const VIDEO_HEIGHT = 480
+const IMG_WIDTH = 170
+const IMG_HEIGHT = 150
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // Create a canvas of size 640x480
@@ -37,11 +37,11 @@ function draw() {
   }
 
   if(isStamping){
-    image(imgObject, mouseX, mouseY, 100, 100)
+    image(imgObject, mouseX, mouseY, IMG_WIDTH, IMG_HEIGHT)
   }
   // Display stamped images from stampArray
   for (let stamp of stampArray) {
-    image(stamp.img, stamp.x, stamp.y, 100, 100);
+    image(stamp.img, stamp.x, stamp.y, IMG_WIDTH, IMG_HEIGHT);
   }
 }
 
