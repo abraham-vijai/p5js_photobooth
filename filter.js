@@ -18,6 +18,4 @@ class Filter {
     static blur() {
         appliedFilter = "blur";
     }
-
-
 }

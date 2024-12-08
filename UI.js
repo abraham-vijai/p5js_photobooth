@@ -53,6 +53,26 @@ class UI {
     }
 
     /*
+    Method name  : createImage
+    Description  : Creates and positions an image element in the UI.
+    Parameters   : src (string): The path or URL to the image file.
+                   x (number): The x position of the UI element.
+                   y (number): The y position of the UI element.
+                   width (number): The width of the image element (optional).
+                   height (number): The height of the image element (optional).
+    Return value : The created image element.
+    */
+    createImage(src, x = 0, y = 0, width = null, height = null, onClick = null) {
+        let img = createImg(src);
+        img.position(x, y);
+        if (width && height) img.size(width, height);
+        if (onClick) img.mouseClicked(onClick);
+        if (this.parent) img.parent(this.parent);
+        return img;
+
+    }
+
+    /*
     Method name  : createSlider
     Description  : Creates and positions a slider in the UI, with a label that updates as the slider's value changes.
     Parameters   : min (number): The minimum value of the slider.
@@ -159,5 +179,26 @@ class UI {
         yOffset += ySpacing;
 
         this.HasFilter = ui.createCheckbox("No Filter", false, 10, yOffset)
+
+        yOffset += ySpacing;
+
+        ui.createLabel("Glasses", 10, yOffset);
+        ui.createImage("assets/glasses.png", 10, yOffset + 10, 70, 50, () => stampImage("glasses"));
+
+        yOffset += 70;
+
+        ui.createLabel("Moustache", 10, yOffset);
+        ui.createImage("assets/moustache.png", 10, yOffset + 10, 70, 50, () => stampImage("moustache"));
+
+        yOffset += 70;
+
+        ui.createLabel("Santa Claus", 10, yOffset);
+        ui.createImage("assets/santa-claus.png", 10, yOffset + 25, 70, 50, () => stampImage("santa"));
+
+        yOffset += 80;
+
+        ui.createLabel("Hat", 10, yOffset);
+        ui.createImage("assets/hat.png", 10, yOffset + 15, 70, 50, () => stampImage("hat"));
     }
+
 }
