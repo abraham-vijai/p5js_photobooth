@@ -17,6 +17,9 @@ class UI {
     }
 
     static HasFilter = false;
+    static borderColor;
+    static fillColor;
+    static borderThickness;
 
     /*
     Method name  : createLabel
@@ -149,6 +152,27 @@ class UI {
     }
 
     /*
+    Method name  : createComboBox
+    Description  : Creates and positions a combo box (select element) in the UI, with options.
+    Parameters   : options (array): Array of strings representing the options for the combo box.
+                   x (number): The x position of the combo box.
+                   y (number): The y position of the combo box.
+    Return value : The created combo box element.
+    */
+    createComboBox(options, x = 0, y = 0) {
+        let combo = createSelect();
+        combo.position(x, y);
+        if (this.parent) combo.parent(this.parent);
+
+        // Add options to the combo box
+        for (let option of options) {
+            combo.option(option);
+        }
+
+        return combo;
+    }
+
+    /*
     Method name  : setupUI
     Description  : Initializes and sets up all the UI elements and their corresponding labels, sliders, buttons, etc.
     Parameters   : None
@@ -159,8 +183,8 @@ class UI {
 
         let xOffset = windowWidth + 10; // Starting x position
         let yOffset = 10;  // Starting y position
-        let ySpacing = 40;
-        let gap = 40;  // Vertical space between rows
+        let ySpacing = 45;
+        let gap = 80;  // Vertical space between rows
 
         ui.createButton('Invert', 10, yOffset, Filter.invert);
 
@@ -185,20 +209,40 @@ class UI {
         ui.createLabel("Glasses", 10, yOffset);
         ui.createImage("assets/glasses.png", 10, yOffset + 10, 70, 50, () => stampImage("glasses"));
 
-        yOffset += 70;
+        yOffset += gap;
 
         ui.createLabel("Moustache", 10, yOffset);
         ui.createImage("assets/moustache.png", 10, yOffset + 10, 70, 50, () => stampImage("moustache"));
 
-        yOffset += 70;
+        yOffset += gap;
 
         ui.createLabel("Santa Claus", 10, yOffset);
         ui.createImage("assets/santa-claus.png", 10, yOffset + 25, 70, 50, () => stampImage("santa"));
 
-        yOffset += 80;
+        yOffset += gap;
 
         ui.createLabel("Hat", 10, yOffset);
         ui.createImage("assets/hat.png", 10, yOffset + 15, 70, 50, () => stampImage("hat"));
-    }
 
+        yOffset += gap;
+
+        ui.createButton("Rectangle", 10, yOffset, () => createShape("rectangle"))
+        ui.createButton("Ellipse", 10, yOffset + 30, () => createShape("ellipse"))
+
+        yOffset += gap
+
+        ui.createLabel("Fill Color", 10, yOffset)
+        this.fillColor = ui.createColorPicker("black", 10, yOffset + 20)
+
+        yOffset += ySpacing
+
+        ui.createLabel("Border Color", 10, yOffset)
+        this.borderColor = ui.createColorPicker("red", 10, yOffset + 20)
+
+        yOffset += ySpacing
+
+        ui.createLabel("Border Thickness", 10, yOffset)
+        let comboBoxOptions = ['None', '1', '2', '3'];
+        this.borderThickness = ui.createComboBox(comboBoxOptions, 10, yOffset + 20);
+    }
 }

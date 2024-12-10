@@ -18,4 +18,13 @@ class Filter {
     static blur() {
         appliedFilter = "blur";
     }
+
+    static applyFilter(){
+        filter(appliedFilter);
+
+        if (UI.HasFilter.checked()) {
+            appliedFilter = "opaque";
+        }
+    }
+    
 }
