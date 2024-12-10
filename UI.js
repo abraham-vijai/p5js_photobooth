@@ -244,5 +244,7 @@ class UI {
         ui.createLabel("Border Thickness", 10, yOffset)
         let comboBoxOptions = ['None', '1', '2', '3'];
         this.borderThickness = ui.createComboBox(comboBoxOptions, 10, yOffset + 20);
+
+        ui.createButton('Reset', 120, 10, () => reset())
     }
 }

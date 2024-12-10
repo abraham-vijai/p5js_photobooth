@@ -170,3 +170,8 @@ function createShape(shapeType) {
 }
 
 
+function reset(params) {
+  shapeArray =[]
+  stampArray = []
+  appliedFilter = "opaque"
+}
