@@ -17,14 +17,15 @@ let drawEnabled;// = false;  // Flag to enable drawing
 let currentShapeType;
 let fillColor;
 let borderThickness;
+let canvas
 
 const VIDEO_WIDTH = 640
 const VIDEO_HEIGHT = 480
 const IMG_WIDTH = 170
 const IMG_HEIGHT = 150
-
+const SPACEBAR = '32'
 function setup() {
-  createCanvas(windowWidth, windowHeight); // Create a canvas of size 640x480
+  canvas = createCanvas(windowWidth, windowHeight); // Create a canvas of size 640x480
 
   drawEnabled = false;
   currentShape = null;
@@ -167,6 +168,30 @@ function createShape(shapeType) {
   drawEnabled = true;
   currentShape = null;
   currentShapeType = shapeType
+}
+
+/*
+Method name  : saveCanvasImage
+Description  : Saves the current canvas image to a PNG file when spacebar is pressed.
+Parameters   : canvas (p5.Element): The p5.js canvas element to save.
+               fileName (string): The name for the saved PNG file (default is 'canvas_image.png').
+*/
+function saveCanvasImage(fileName = 'canvas_image.png') {
+  // Create a new p5.Image to capture the canvas content
+  let canvasImage = createImage(VIDEO_WIDTH, VIDEO_HEIGHT);
+  
+  // Draw the canvas content onto the p5.Image
+  canvasImage.copy(canvas, (width - video.width) / 2, (height - video.height) / 2, VIDEO_WIDTH, VIDEO_HEIGHT, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
+  
+  // Save the captured canvas image as PNG
+  canvasImage.save(fileName);
+}
+
+
+function keyPressed() {
+  if (keyCode == SPACEBAR) {
+      saveCanvasImage();
+  }
 }
 
 
