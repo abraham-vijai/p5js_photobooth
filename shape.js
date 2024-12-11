@@ -1,3 +1,7 @@
+/*
+Class name   : Shape
+Description  : Represents a shape object (rectangle or ellipse) with specified dimensions, colors, and border properties.
+*/
 class Shape {
     constructor(x, y, w, h, type, borderColor, fillColor, borderThickness) {
         this.x = x;
@@ -10,6 +14,12 @@ class Shape {
         this.borderThickness = borderThickness;
     }
 
+    /*
+    Method name  : draw
+    Description  : Draws the shape on the canvas with specified border color, fill color, and border thickness.
+    Parameters   : None
+    Return value : None
+    */
     draw() {
         stroke(this.borderColor);
         if (this.borderThickness == "None") {

@@ -1,11 +1,4 @@
 /*
-Filename    : UI.js
-Author      : Abraham Vijai
-Date        : 2024-11-24
-Description : This is the UI.js function
-*/
-
-/*
 Class name   : UI
 Description  : This class provides methods for creating and managing UI elements such as buttons, sliders, color pickers, and more.
                It also supports attaching UI elements to a specific DOM element and managing the layout.
