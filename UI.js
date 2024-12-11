@@ -181,69 +181,69 @@ class UI {
     static setupUI() {
         let ui = new UI();
 
-        let xOffset = windowWidth + 10; // Starting x position
+        let xOffset = 10; // Starting x position
         let yOffset = 10;  // Starting y position
         let ySpacing = 45;
         let gap = 80;  // Vertical space between rows
 
-        ui.createButton('Invert', 10, yOffset, Filter.invert);
+        ui.createButton('Invert', xOffset, yOffset, Filter.invert);
 
         yOffset += ySpacing;
 
-        ui.createButton('Blur', 10, yOffset, Filter.blur);
+        ui.createButton('Blur', xOffset, yOffset, Filter.blur);
 
         yOffset += ySpacing;
 
-        ui.createButton('Posterize', 10, yOffset, Filter.posterize);
+        ui.createButton('Posterize', xOffset, yOffset, Filter.posterize);
 
         yOffset += ySpacing;
 
-        ui.createButton('Gray', 10, yOffset, Filter.gray);
+        ui.createButton('Gray', xOffset, yOffset, Filter.gray);
 
         yOffset += ySpacing;
 
-        this.HasFilter = ui.createCheckbox("No Filter", false, 10, yOffset)
+        this.HasFilter = ui.createCheckbox("No Filter", false, xOffset, yOffset)
 
         yOffset += ySpacing;
 
-        ui.createLabel("Glasses", 10, yOffset);
-        ui.createImage("assets/glasses.png", 10, yOffset + 10, 70, 50, () => stampImage("glasses"));
+        ui.createLabel("Glasses", xOffset, yOffset);
+        ui.createImage("assets/glasses.png", xOffset, yOffset + 10, 70, 50, () => stampImage("glasses"));
 
         yOffset += gap;
 
-        ui.createLabel("Moustache", 10, yOffset);
-        ui.createImage("assets/moustache.png", 10, yOffset + 10, 70, 50, () => stampImage("moustache"));
+        ui.createLabel("Moustache", xOffset, yOffset);
+        ui.createImage("assets/moustache.png", xOffset, yOffset + 10, 70, 50, () => stampImage("moustache"));
 
         yOffset += gap;
 
-        ui.createLabel("Santa Claus", 10, yOffset);
-        ui.createImage("assets/santa-claus.png", 10, yOffset + 25, 70, 50, () => stampImage("santa"));
+        ui.createLabel("Santa Claus", xOffset, yOffset);
+        ui.createImage("assets/santa-claus.png", xOffset, yOffset + 25, 70, 50, () => stampImage("santa"));
 
         yOffset += gap;
 
-        ui.createLabel("Hat", 10, yOffset);
-        ui.createImage("assets/hat.png", 10, yOffset + 15, 70, 50, () => stampImage("hat"));
+        ui.createLabel("Hat", xOffset, yOffset);
+        ui.createImage("assets/hat.png", xOffset, yOffset + 15, 70, 50, () => stampImage("hat"));
 
         yOffset += gap;
 
-        ui.createButton("Rectangle", 10, yOffset, () => createShape("rectangle"))
-        ui.createButton("Ellipse", 10, yOffset + 30, () => createShape("ellipse"))
+        ui.createButton("Rectangle", xOffset, yOffset, () => createShape("rectangle"))
+        ui.createButton("Ellipse", xOffset, yOffset + 30, () => createShape("ellipse"))
 
         yOffset += gap
 
-        ui.createLabel("Fill Color", 10, yOffset)
-        this.fillColor = ui.createColorPicker("black", 10, yOffset + 20)
+        ui.createLabel("Fill Color", xOffset, yOffset)
+        this.fillColor = ui.createColorPicker("black", xOffset, yOffset + 20)
 
         yOffset += ySpacing
 
-        ui.createLabel("Border Color", 10, yOffset)
-        this.borderColor = ui.createColorPicker("red", 10, yOffset + 20)
+        ui.createLabel("Border Color", xOffset, yOffset)
+        this.borderColor = ui.createColorPicker("red", xOffset, yOffset + 20)
 
         yOffset += ySpacing
 
-        ui.createLabel("Border Thickness", 10, yOffset)
+        ui.createLabel("Border Thickness", xOffset, yOffset)
         let comboBoxOptions = ['None', '1', '2', '3'];
-        this.borderThickness = ui.createComboBox(comboBoxOptions, 10, yOffset + 20);
+        this.borderThickness = ui.createComboBox(comboBoxOptions, xOffset, yOffset + 20);
 
         ui.createButton('Reset', 120, 10, () => reset())
     }
